@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type MyInt int
 
 func even(i int) bool {
@@ -21,15 +23,15 @@ func MyIntTabSize(s MyIntTab) int {
 	return len(s)
 }
 
-// func main() {
-// 	fmt.Println(even(2))
-// 	fmt.Println(odd(2))
-// 	var myInt MyInt = 1
-// 	fmt.Println(even(int(myInt)))
-// 	listeA := []int{1, 2}
-// 	fmt.Println(size(listeA))
-// 	//fmt.Println(MyIntTabSize(listeA))
-// 	var listeB MyIntTab = MyIntTab{1, 2}
-// 	//fmt.Println(size(listeB))
-// 	fmt.Println(MyIntTabSize(listeB))
-// }
+func main() {
+	fmt.Println(even(2))
+	fmt.Println(odd(2))
+	var myInt MyInt = 1
+	fmt.Println(even(int(myInt)))
+	listeA := []int{1, 2}
+	fmt.Println(size(listeA))
+	//fmt.Println(MyIntTabSize(listeA))
+	var listeB MyIntTab = MyIntTab{1, 2}
+	//fmt.Println(size(listeB))
+	fmt.Println(MyIntTabSize(listeB))
+}

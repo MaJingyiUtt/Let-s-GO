@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -14,8 +15,16 @@ func main() {
 func listUser() {
 	file, _ := os.Open("/etc/passwd")
 	rd := bufio.NewReader(file)
+	var userMap map[string]string = make(map[string]string)
 	for {
 		line, err := rd.ReadString('\n')
+		splitTab := strings.Split(line, ":")
+		if len(splitTab) > 3 {
+			user := splitTab[0]
+			value := splitTab[2]
+			userMap[user] = value
+			//pour convertir en int : val,err=strconv.Atoi(value)
+		}
 		if err == io.EOF {
 			fmt.Println(line)
 			break
@@ -23,7 +32,9 @@ func listUser() {
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println(line)
+	}
+	for key, val := range userMap {
+		fmt.Println(key + " " + val)
 	}
 	file.Close()
 }
